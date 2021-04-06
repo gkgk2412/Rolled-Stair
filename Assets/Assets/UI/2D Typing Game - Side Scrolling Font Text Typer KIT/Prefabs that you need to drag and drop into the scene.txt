@@ -1,0 +1,12 @@
+Step 1: Go to the prefabs folder and drag and drop these prefabs into your scene:
+•	Normal Canvas
+•	Background Music
+•	Game Manager
+•	Word Manager (Spawner)
+•	Main Camera
+•	End Game Collider
+•	Starting Text
+
+Step 2: Add some sprites and backgrounds to make your game look better.
+
+Step 3: Play the game and edit it to your needs.
