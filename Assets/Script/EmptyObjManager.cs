@@ -14,14 +14,6 @@ public class EmptyObjManager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("isEmptyObj  " + isEmptyObj);
-        Debug.Log("isFloorSet  " + isFloorSet);
-
-    }
-
     void OnCollisionStay2D(Collision2D other)
     {
         if (other.gameObject.tag == "ColObject")

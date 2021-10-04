@@ -6,25 +6,13 @@ TagManager:
   tags:
   - 1
   - ColObject
-  - Image4
-  - Image1
-  - 7
-  - 5
-  - 0
   - clear
-  - Image6
-  - 2
   - Image2
   - Image3
-  - Image5
-  - 3
   - ExtraObject
   - StartButton
-  - 8
   - clear2
-  - 4
-  - clear3
-  - 6
+  - Stair
   layers:
   - Default
   - TransparentFX
@@ -34,8 +22,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - target
+  - 10
   - 
   - 
   - 

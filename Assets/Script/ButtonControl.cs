@@ -19,16 +19,14 @@ public class ButtonControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public GameObject OptionPanel;
     private bool OptPanel;
+    
+    public static bool isCilckGoBut = false;
 
     void Start()
     {
         OptionPanel.SetActive(false);
         OptPanel = false;
-    }
-
-    void Update()
-    {
-
+        isCilckGoBut = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData) //마우스포인터가 충돌범위안에 들어올때 이벤트
@@ -114,9 +112,17 @@ public class ButtonControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void GoMove()
     {
-        Player.IsRight = true;
-        GoButton.SetActive(false);
-    }
+        if(!isCilckGoBut)
+        {
+            GoButton.GetComponentInChildren<Text>().text = "STOP";
+            isCilckGoBut = true;
+        }
 
+        else
+        {
+            GoButton.GetComponentInChildren<Text>().text = "GO";
+            isCilckGoBut = false;
+        }        
+    }
 }
 
