@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 { 
     //Play
     float time; //게임 시간
-    float score; //점수
+    float score = 0; //점수
 
     public Text timeText; //시간 보여주는 텍스트
     public Text socreText; //점수 보여주는 텍스트
@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
     {
         ClearPanel.SetActive(false);
 
+        score = 0;
+
         rigid = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime; //시간 증가
-        score = transform.position.y; //플레이어의 y 위치가 점수가 됨
+        //score = transform.position.y; //플레이어의 y 위치가 점수가 됨
         timeText.text = "time : " + Mathf.Round(time); //현재 시간 보여줌
         socreText.text = "score : " + score; //현재 점수 보여줌
 

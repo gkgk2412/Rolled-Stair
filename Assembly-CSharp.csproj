@@ -94,6 +94,8 @@
     <Compile Include="Assets\PositionOrderer\PositionOrderer.cs" />
     <Compile Include="Assets\Script\ButtonControl.cs" />
     <Compile Include="Assets\Script\CanvasStairManager.cs" />
+    <Compile Include="Assets\Script\CheckCollectCol.cs" />
+    <Compile Include="Assets\Script\DragDrop.cs" />
     <Compile Include="Assets\Script\DragStair.cs" />
     <Compile Include="Assets\Script\DragStair_for_Stage.cs" />
     <Compile Include="Assets\Script\EmptyObjManager.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Assets\Script\StairManager.cs" />
     <Compile Include="Assets\Script\StairPosition.cs" />
     <Compile Include="Assets\Script\UIevent.cs" />
+    <Compile Include="Assets\Script\deleteButton.cs" />
     <None Include="Assets\Assets\UI\2D Typing Game - Side Scrolling Font Text Typer KIT\Prefabs that you need to drag and drop into the scene.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Assets\effect\Epic Toon FX\Prefabs\Environment\Environment FX.txt" />

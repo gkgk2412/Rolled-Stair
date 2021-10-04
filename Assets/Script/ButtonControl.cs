@@ -13,6 +13,7 @@ public class ButtonControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private GameObject ReturnButton;
     public GameObject GoButton;
 
+
     private Vector3 preScale_Start;
     private Vector3 preScale_Rank;
 
@@ -116,5 +117,6 @@ public class ButtonControl : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         Player.IsRight = true;
         GoButton.SetActive(false);
     }
+
 }
 
