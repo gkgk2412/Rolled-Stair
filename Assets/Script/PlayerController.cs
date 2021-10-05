@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public UnityEvent _ClearEventON;
+
     SpriteRenderer renderer;
     Animator animator;
     Rigidbody2D rigid;
@@ -66,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
             if (isJump) //점프
             {
+                Player.score += 10;
+
                 if (isRight)
                 {
                     audioSource.PlayOneShot(JumpaudioClip);
@@ -99,12 +104,14 @@ public class PlayerController : MonoBehaviour
 
             if (transform.position.x >= rightWallPos) //오른쪽 벽 넘으면
             {
+                transform.position = new Vector2(rightWallPos, this.transform.position.y);
                 isRight = false;
                 isLeft = true;
             }
 
             if (transform.position.x <= leftWallPos) //왼쪽 벽 넘으면
             {
+                transform.position = new Vector2(leftWallPos, this.transform.position.y);
                 isRight = true;
                 isLeft = false;
             }
@@ -113,6 +120,16 @@ public class PlayerController : MonoBehaviour
         //Stop버튼이 눌러졌으면
         else
         {
+            if (transform.position.x >= rightWallPos) //오른쪽 벽 넘으면
+            {
+                transform.position = new Vector2(rightWallPos, this.transform.position.y);
+            }
+
+            if (transform.position.x <= leftWallPos) //왼쪽 벽 넘으면
+            {
+                transform.position = new Vector2(leftWallPos, this.transform.position.y);
+            }
+
             isJump = false;
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsRightRunning", false);
@@ -142,10 +159,63 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //점프 후 바닥에 닿였는지 확인
-        if (other.gameObject.layer == 9 && rigid.velocity.y < 0)
+        if (other.gameObject.layer == 8 || other.gameObject.layer == 9 && rigid.velocity.y < 0)
         {
             animator.SetBool("IsJumping", false);
             HitStair = false;
         }
+
+        //상자에 닿였으면
+        if (other.gameObject.tag == "clear")
+        {
+            audioSource.PlayOneShot(HitaudioClip);
+
+            isRight = false;
+            isLeft = false;
+            animator.SetBool("IsRightRunning", false);
+            animator.SetBool("IsLeftRunning", false);
+            audioSource.PlayOneShot(ClearaudioClip);
+
+            Player.IsClear[0] = true;
+
+            ClearPanelOn();
+        }
+
+        //상자에 닿였으면
+        if (other.gameObject.tag == "clear2")
+        {
+            audioSource.PlayOneShot(HitaudioClip);
+
+            isRight = false;
+            isLeft = false;
+            animator.SetBool("IsRightRunning", false);
+            animator.SetBool("IsLeftRunning", false);
+            audioSource.PlayOneShot(ClearaudioClip);
+
+            Player.IsClear[1] = true;
+
+            ClearPanelOn();
+        }
+
+        //상자에 닿였으면
+        if (other.gameObject.tag == "clear3")
+        {
+            audioSource.PlayOneShot(HitaudioClip);
+
+            isRight = false;
+            isLeft = false;
+            animator.SetBool("IsRightRunning", false);
+            animator.SetBool("IsLeftRunning", false);
+            audioSource.PlayOneShot(ClearaudioClip);
+
+            Player.IsClear[2] = true;
+
+            ClearPanelOn();
+        }
+    }
+
+    public void ClearPanelOn()
+    {
+        _ClearEventON.Invoke();
     }
 }

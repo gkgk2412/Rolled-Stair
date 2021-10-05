@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 {
     //Play
     private float time; //게임 시간
-    private float score = 0; //점수
+    public static float score = 0; //점수
     private string Name = null; //닉네임
 
     static public bool[] IsClear = new bool[3];
@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime; //시간 증가
-        //score = transform.position.y; //플레이어의 y 위치가 점수가 됨
         timeText.text = "time : " + Mathf.Round(time); //현재 시간 보여줌
         socreText.text = "score : " + score; //현재 점수 보여줌
 
@@ -60,74 +59,6 @@ public class Player : MonoBehaviour
         }
 
     }
-
-    
-    //layer 또는 tag로 닿였음을 확인하는 함수
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    //점프 후 바닥에 닿였는지 확인
-    //    if (other.gameObject.layer == 10 && rigid.velocity.y < 0)
-    //    {
-    //        animator.SetBool("IsJumping", false);
-    //        HitStair = false;
-    //    }
-
-    //    //상자에 닿였으면
-    //    if (other.gameObject.tag == "clear")
-    //    {
-    //        audioSource.PlayOneShot(HitaudioClip);
-
-    //        IsRight = false;
-    //        IsLeft = false;
-    //        animator.SetBool("IsRightRunning", false);
-    //        animator.SetBool("IsLeftRunning", false);
-    //        IsClear[0] = true;
-    //        audioSource.PlayOneShot(ClearaudioClip);
-
-    //        ClearPanel.SetActive(true);
-    //        IsScoreText.text = " " + score; //현재 점수 보여줌
-
-            
-    //    }
-
-    //    //상자에 닿였으면
-    //    if (other.gameObject.tag == "clear2")
-    //    {
-    //        audioSource.PlayOneShot(HitaudioClip);
-
-    //        IsRight = false;
-    //        IsLeft = false;
-    //        animator.SetBool("IsRightRunning", false);
-    //        animator.SetBool("IsLeftRunning", false);
-    //        IsClear[1] = true;
-    //        audioSource.PlayOneShot(ClearaudioClip);
-
-    //        ClearPanel.SetActive(true);
-    //        IsScoreText.text = " " + score; //현재 점수 보여줌
-
-           
-    //    }
-
-    //    //상자에 닿였으면
-    //    if (other.gameObject.tag == "clear3")
-    //    {
-    //        audioSource.PlayOneShot(HitaudioClip);
-
-    //        IsRight = false;
-    //        IsLeft = false;
-    //        animator.SetBool("IsRightRunning", false);
-    //        animator.SetBool("IsLeftRunning", false);
-
-    //        IsClear[2] = true;
-    //        audioSource.PlayOneShot(ClearaudioClip);
-
-    //        ClearPanel.SetActive(true);
-    //        IsScoreText.text = " " + score; //현재 점수 보여줌
-    //    }
-    //}
-
-    //순위 제작
-
 
 
     void InsertBank()
@@ -154,5 +85,12 @@ public class Player : MonoBehaviour
             PlayerPrefs.SetFloat(tempIndex.ToString(), tempValue); //처음 값이 가장 큰 값이 있던 인덱스에 저장된다
             PlayerPrefs.SetString("name" + tempIndex.ToString(), tempChar); //처음 값의 닉네임이 가장 큰 값이 있던 인덱스에 저장된다
         }
+    }
+
+
+    public void ClearFunc()
+    {
+        ClearPanel.SetActive(true);
+        IsScoreText.text = " " + score; //현재 점수 보여줌
     }
 }

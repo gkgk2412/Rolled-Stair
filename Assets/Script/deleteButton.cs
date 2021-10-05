@@ -47,6 +47,12 @@ public class deleteButton : MonoBehaviour
                     {
                         Destroy(touchedObject.transform.parent.gameObject);
                     }
+
+                    //검출된 obj가 계단일 경우 삭제
+                    if (touchedObject.tag == "Stair")
+                    {
+                        Destroy(touchedObject);
+                    }
                 }
 
             }    
